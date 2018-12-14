@@ -1,0 +1,10 @@
+<form class="form" enctype='multipart/form-data' method="POST">
+    {{ form.hidden_tag() }}
+    {{ form.idd.label }}{{ form.idd() }}
+    <br>
+    {{ form.q.label }}{{ form.q() }}
+    <br>
+    {{ form.file.label }}{{ form.file() }}
+    <br>
+    {{ form.submit() }}
+</form>
