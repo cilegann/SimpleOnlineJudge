@@ -15,20 +15,22 @@ def judgeCpp(question,fn):
             judge_lines=judge.readlines()
     if len(right_lines)!=len(judge_lines):
         ok=False
+        errorType="NA"
+        errorMsg="你共輸出 "+str(len(judge_lines))+" 行"
     else:
         ok=True
+        errorMsg=""
         for i,l in enumerate(right_lines):
             if l !=judge_lines[i]:
-                print("Line NO."+str(i+1))
-                print("Ans: "+l)
-                print("Your ans: "+judge_lines[i])
+                errorMsg+=("第 "+str(i+1)+" 行<br>")
+                errorMsg+=("正確答案: "+l+"<br>")
+                errorMsg+=("你的答案: "+judge_lines[i]+"<br>")
                 ok=False
+                errorType="WA"
                 break
     os.system("rm "+out)
     os.system("rm "+result)
     if ok:
-        print(fn+" AC")
         return "AC"
     else:
-        print(fn+" WA")
-        return "WA"
+        return errorType+" (Msg below)<br>"+errorMsg
